@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: rgb(69, 69, 69);
+    color: white;
+    font-family: 'Netflix Sans';
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-image: linear-gradient(black, transparent);
+    height: 41px;
+}
+
+nav #logo{
+    padding: 10px;
+}
+
+nav #logo img{
+    width: 50px;
+}
+
+nav #account{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav a{
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    display: none;
+}
