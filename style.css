@@ -38,3 +38,7 @@ nav a{
     cursor: pointer;
     display: none;
 }
+
+main img{
+    width: 100%;
+}

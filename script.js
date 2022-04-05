@@ -33,7 +33,8 @@ const createCard = (title, imgUrl, popularity, id, date) => {
 const main = document.querySelector("main");
 
 const apiKey = "652bd852a54702ac6a9aab4afa9bc98a";
-const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=Jack+Reacher`;
+
+const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=53`;
 
 getMovies(url).then(data => {
     data.map(movie => {
