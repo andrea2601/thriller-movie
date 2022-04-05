@@ -1,44 +1,90 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
-    background: rgb(69, 69, 69);
+body {
+    background: #141414;
     color: white;
     font-family: 'Netflix Sans';
 }
 
-nav{
+nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-image: linear-gradient(black, transparent);
     height: 41px;
+    margin-bottom: 10px;
 }
 
-nav #logo{
-    padding: 10px;
+nav #logo {
+    margin-top: 10px;
+    padding: 25px 15px;
 }
 
-nav #logo img{
-    width: 50px;
+nav #logo img {
+    width: 55px;
 }
 
-nav #account{
+nav #account {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 10px;
+    gap: 10px;
 }
 
-nav a{
+nav #account #avatar img {
+    width: 35px;
+    border-radius: 5px;
+}
+
+nav #account #avatar {
+    padding: 0 10px;
+}
+
+nav a {
     color: white;
     text-decoration: none;
     cursor: pointer;
     display: none;
 }
 
-main img{
-    width: 100%;
+
+main .cardWrapper {
+    display: flex;
+    justify-content: start;
+    align-items: baseline;
+    flex-wrap: nowrap;
+    overflow: scroll;
+    height: 105px;
+}
+
+main h2 {
+    /* display: inline-block; */
+    font-size: 24px;
+    padding: 0 8px 2px 8px;
+    background-image: linear-gradient(transparent, black);
+}
+
+main .cardWrapper img {
+    width: 180px;
+    padding: 0 5px 5px 5px;
+    object-fit: cover;
+}
+
+main .cardWrapper h3 {
+    width: 170px;
+    position: relative;
+    bottom: 36px;
+    padding: 2px 0 2px 5px;
+    margin: 0 0 0 5px;
+    background-image: linear-gradient(transparent, black);
+}
+
+main .cardWrapper .card .popularity,
+main .cardWrapper .card .date {
+    display: none;
 }
