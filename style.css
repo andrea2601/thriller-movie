@@ -59,12 +59,14 @@ main .cardWrapper {
     align-items: baseline;
     flex-wrap: nowrap;
     overflow: scroll;
+    overflow-y: hidden;
     height: 105px;
 }
 
 main h2 {
     /* display: inline-block; */
     font-size: 24px;
+    margin-top: 15px;
     padding: 0 8px 2px 8px;
     background-image: linear-gradient(transparent, black);
 }
@@ -88,3 +90,75 @@ main .cardWrapper .card .popularity,
 main .cardWrapper .card .date {
     display: none;
 }
+
+main .cardWrapper .card:hover {
+    transform: scale(1.5);
+    transition: all 0.5s ease-in-out;
+    z-index: 10;
+}
+
+main .cardWrapperList {
+    display: flex;
+    justify-content: start;
+    align-items: baseline;
+    flex-wrap: nowrap;
+    overflow: scroll;
+    overflow-y: hidden;
+    height: 105px;
+}
+
+main h2 {
+    /* display: inline-block; */
+    font-size: 24px;
+    margin-top: 15px;
+    padding: 0 8px 2px 8px;
+    background-image: linear-gradient(transparent, black);
+}
+
+main .cardWrapperList img {
+    width: 180px;
+    padding: 0 5px 5px 5px;
+    object-fit: cover;
+}
+
+main .cardWrapperList h3 {
+    width: 170px;
+    position: relative;
+    bottom: 36px;
+    padding: 2px 0 2px 5px;
+    margin: 0 0 0 5px;
+    background-image: linear-gradient(transparent, black);
+}
+
+main .cardWrapperList .card .popularity,
+main .cardWrapperList .card .date {
+    display: none;
+}
+
+main .cardWrapperList .card:hover {
+    transform: scale(1.5);
+    transition: all 0.5s ease-in-out;
+    z-index: 10;
+}
+
+/* SCROLLBAR */
+/* width */
+::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
