@@ -366,4 +366,19 @@ main .cardWrapperList .card {
         transition: all 0.5s ease-in-out;
         z-index: 999;
     }
-}
+
+
+@media all and (max-height:780px)  and (max-width:580px){
+    
+    
+    .login .profiles img {
+        width: 100px;
+    }
+    .login .profiles p{
+        font-size: 20px;
+    }
+
+
+    .login #noLogin{
+        transform: translate(0, -67px);
+    }}
