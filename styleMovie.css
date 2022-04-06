@@ -32,9 +32,10 @@ main.cardWrapperMovie .card {
     display: flex;
     flex-wrap: wrap;
     align-content: center;
+    justify-content: flex-start;
     height: 100vh;
-    width: 100vh;
-    padding: 0 0 0 100px;
+    width: 71vw;
+    padding: 0 0 0 10vw;
 }
 
 main.cardWrapperMovie .card .img {
@@ -65,10 +66,24 @@ main.cardWrapperMovie .card p {
     width: 100%;
 }
 
-main.cardWrapperMovie .card p.popularity,
-main.cardWrapperMovie .card p.genre,
-main.cardWrapperMovie .card p.date{
-    width: 33%;
+
+main.cardWrapperMovie .card p.genre {
+    width: 30%;
+    display: block;
+    padding-bottom: 5px;
+    color: rgb(173, 173, 173);
+}
+
+main.cardWrapperMovie .card p.date {
+    margin-right: 3vw;
+    width: 20%;
+    display: block;
+    padding-bottom: 5px;
+    color: rgb(173, 173, 173);
+}
+
+main.cardWrapperMovie .card p.popularity {
+    width: 10%;
     display: block;
     padding-bottom: 5px;
     color: rgb(173, 173, 173);
@@ -76,13 +91,13 @@ main.cardWrapperMovie .card p.date{
 
 main.cardWrapperMovie .card h3 {
     width: 100%;
-    font-size: 100px;
+    font-size: 5.5em;
     padding-top: 20px;
     z-index: 5;
-    
+
 }
 
-main.cardWrapperMovie .card .btn{
+main.cardWrapperMovie .card .btn {
     z-index: 5;
     color: white;
     padding: 10px;
@@ -92,4 +107,11 @@ main.cardWrapperMovie .card .btn{
     border-radius: 10%;
     cursor: pointer;
     display: flex;
+}
+@media all and (max-width:580px){
+    main.cardWrapperMovie .card h3 {
+        font-size: 3.5em;
+    }
+    main.cardWrapperMovie .card {
+        padding: 0 0 0 15vw;}
 }
