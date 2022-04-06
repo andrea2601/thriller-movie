@@ -26,13 +26,14 @@ nav {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: #000;
+    background: #141414;
     z-index: 300;
 
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    background-image: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 31%);
 }
 .login #logo{
     text-align: start;
@@ -301,6 +302,7 @@ main .cardWrapperList .card {
         justify-content: center;
         flex-wrap: wrap;
         align-items: baseline;
+        align-content: baseline;
        
     }
     
@@ -313,7 +315,7 @@ main .cardWrapperList .card {
     }
     
     .login .profiles img {
-        width: 150px;
+        width: 130px;
         border-radius: 7%;
         text-align: center;
     }
@@ -341,6 +343,17 @@ main .cardWrapperList .card {
         height: auto;
     }
 
+    .login #noLogin{
+        transform: translate(0, -68px);
+    }
+    
+    /* .login #noLogin p{
+        /* padding: 10px;
+        display: block;
+        border: 2px solid gray;
+        text-align: center;
+        width: 50vw; */
+    } */
 
     main .cardWrapper .card:hover {
         transform: scale(1);
