@@ -90,32 +90,54 @@ getMovies(url).then(data => {
             movie.release_date
         );
     })
-    cards = document.querySelectorAll(".plus");
-    console.log(cards);
-    cards.forEach((element,key) => {
+
+    const profiles = document.querySelectorAll(".profile");
+    const guest = document.querySelector("#noLogin");
+    let autenticator = 0;
+
+    profiles.forEach(element => {
         element.addEventListener("click", () => {
-            myList.push(movieArray.find(item =>
-                item.id == element.id
-            ));
-            console.log(myList);
-
-            element.classList.add("hide");
-
-            const stars = document.querySelectorAll(".star");
-            stars[key].classList.add("show");
-            // stars.forEach(star => );
-
-            const cardWrapperList = document.querySelector(".cardWrapperList");
-            cardWrapperList.textContent = "";
-            myList.map(movie => {
-                createMyList(
-                    movie.title,
-                    movie.backdrop_path,
-                    movie.popularity,
-                    movie.id,
-                    movie.release_date
-                );
-            })
+            document.querySelector(".login").classList.add("hide");
+            autenticator = 1;
         })
-    });
+    })
+
+    guest.addEventListener("click", () => {
+        document.querySelector(".login").classList.add("hide");
+        autenticator = 0;
+    })
+    console.log(autenticator);
+    
+        cards = document.querySelectorAll(".plus");
+        console.log(cards);
+        cards.forEach((element, key) => {
+            element.addEventListener("click", () => {
+                if(autenticator==1){
+                myList.push(movieArray.find(item =>
+                    item.id == element.id
+                ));
+                console.log(myList);
+
+                element.classList.add("hide");
+
+                const stars = document.querySelectorAll(".star");
+                stars[key].classList.add("show");
+                // stars.forEach(star => );
+
+                const cardWrapperList = document.querySelector(".cardWrapperList");
+                cardWrapperList.textContent = "";
+                myList.map(movie => {
+                    createMyList(
+                        movie.title,
+                        movie.backdrop_path,
+                        movie.popularity,
+                        movie.id,
+                        movie.release_date
+                    );
+                })
+        }else{alert("Devi accedere per poter aggiungere elementi alla MyList");}})
+        });
+    
+
 });
+

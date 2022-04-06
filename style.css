@@ -18,8 +18,9 @@ nav {
     height: 41px;
     margin-bottom: 10px;
 }
+
 /* LOGIN */
-.login{
+.login {
     position: fixed;
     top: 0;
     left: 0;
@@ -33,15 +34,63 @@ nav {
     align-items: center;
     flex-wrap: wrap;
 }
-
-.login h1{
+.login #logo{
+    text-align: start;
     width: 100%;
-    text-align: center;
+    padding: 0 50px;
 }
 
-.login img{
-    width: 30%;
-    margin: 10px;
+.login #logo img{
+    width: 200px;
+    height: auto;
+}
+
+.login h1 {
+    width: 100%;
+    text-align: center;
+    font-size: 45px;
+    font-weight: unset;
+}
+
+.login .profiles {
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 20px;
+}
+
+.login .profiles img {
+    width: 150px;
+    border-radius: 7%;
+}
+
+.login .profiles p{
+    text-align: center;
+    font-size: 24px;
+    color: gray;
+}
+
+.login .profiles .profile{
+    cursor: pointer;
+}
+
+.login #noLogin{
+    color: gray;
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    margin: 0 0 20px 0;
+}
+
+.login #noLogin p{
+    padding: 10px;
+    display: block;
+    border: 2px solid gray;
+    text-align: center;
+    width: 50vw;
 }
 
 nav #logo {
@@ -85,6 +134,7 @@ main h2.all {
     background-image: linear-gradient(transparent, black);
     transform: translate(0, 34px);
 }
+
 main h2.list {
     /* display: inline-block; */
     font-size: 24px;
@@ -101,7 +151,8 @@ main .cardWrapper {
     flex-wrap: nowrap;
     overflow: scroll;
     overflow-y: hidden;
-    height: 177px;;
+    height: 177px;
+    ;
 }
 
 main .cardWrapper img {
@@ -109,6 +160,7 @@ main .cardWrapper img {
     padding: 0 5px 5px 5px;
     object-fit: cover;
 }
+
 main .cardWrapper .card span {
     position: relative;
     top: -100px;
@@ -119,7 +171,8 @@ main .cardWrapper .card span {
     border-radius: 50%;
     font-size: 20px;
 }
-main .cardWrapper .card span.star{
+
+main .cardWrapper .card span.star {
     color: gold;
     font-size: 0px;
     border: none;
@@ -144,6 +197,7 @@ main .cardWrapper .card:hover {
     transition: all 0.5s ease-in-out;
     z-index: 101;
 }
+
 /* dighd */
 main .cardWrapperList {
     display: flex;
@@ -152,7 +206,8 @@ main .cardWrapperList {
     flex-wrap: nowrap;
     overflow: scroll;
     overflow-y: hidden;
-    height: 177px;;
+    height: 177px;
+    ;
 }
 
 main .cardWrapperList img {
@@ -160,6 +215,7 @@ main .cardWrapperList img {
     padding: 0 5px 5px 5px;
     object-fit: cover;
 }
+
 main .cardWrapperList .card span {
     position: relative;
     top: -95px;
@@ -170,7 +226,8 @@ main .cardWrapperList .card span {
     border-radius: 50%;
     font-size: 20px;
 }
-main .cardWrapperList .card span.star{
+
+main .cardWrapperList .card span.star {
     color: gold;
     display: none;
 }
@@ -204,33 +261,96 @@ main .cardWrapperList .card {
 }
 
 
-.hide{
+.hide {
     display: none;
 }
 
-.show{
+.show {
     /* display: block !important; */
     font-size: 20px !important;
-    border: 2px solid white!important;
+    border: 2px solid white !important;
 }
+
 /* SCROLLBAR */
 /* width */
 ::-webkit-scrollbar {
     width: 3px;
     height: 3px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: transparent; 
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: transparent; 
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
-  }
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+@media all and (max-width:580px){
+    .login .profiles {
+        width: 100%;
+        height: 75vh;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: baseline;
+       
+    }
+    
+    .login .profiles .profile {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    
+    .login .profiles img {
+        width: 150px;
+        border-radius: 7%;
+        text-align: center;
+    }
+    .login .profiles p{
+        display: block;
+        text-align: center;
+        font-size: 24px;
+        color: gray;
+        width: 100%;
+    }
+    .login h1 {
+        width: 100%;
+        text-align: center;
+        font-size: 30px;
+        font-weight: unset;
+    }
+    .login #logo{
+        text-align: center;
+        width: 100%;
+        padding: 0 50px;
+    }
+    
+    .login #logo img{
+        width: 20vw;
+        height: auto;
+    }
+
+
+    main .cardWrapper .card:hover {
+        transform: scale(1);
+        transition: all 0.5s ease-in-out;
+        z-index: 101;
+    }
+    
+    main .cardWrapperList .card:hover {
+        transform: scale(1);
+        transition: all 0.5s ease-in-out;
+        z-index: 999;
+    }
+}
