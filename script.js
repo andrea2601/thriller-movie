@@ -24,6 +24,7 @@ const createCard = (title, imgUrl, popularity, id, date) => {
 
     imgEl.setAttribute("src", `https://image.tmdb.org/t/p/original/${imgUrl}`);
     imgEl.setAttribute("alt", "img poster");
+    imgEl.setAttribute("id", id);
     divEl.setAttribute("id", id);
     plusEl.setAttribute("id", id);
     starEL.setAttribute("id", id);
@@ -107,12 +108,20 @@ getMovies(url).then(data => {
         autenticator = 0;
     })
     console.log(autenticator);
-    
-        cards = document.querySelectorAll(".plus");
-        console.log(cards);
-        cards.forEach((element, key) => {
-            element.addEventListener("click", () => {
-                if(autenticator==1){
+
+    cards = document.querySelectorAll(".card > img");
+    cards.forEach(element => {
+        element.addEventListener("click", () => {
+            const imgId = element.id;
+            console.log(imgId);
+            window.location = `./movie.html?id=${imgId}`;
+        })
+    })
+    plus = document.querySelectorAll(".plus");
+    console.log(plus);
+    plus.forEach((element, key) => {
+        element.addEventListener("click", () => {
+            if (autenticator == 1) {
                 myList.push(movieArray.find(item =>
                     item.id == element.id
                 ));
@@ -135,9 +144,10 @@ getMovies(url).then(data => {
                         movie.release_date
                     );
                 })
-        }else{alert("Devi accedere per poter aggiungere elementi alla MyList");}})
-        });
-    
+            } else { alert("Devi accedere per poter aggiungere elementi alla MyList"); }
+        })
+    });
+
 
 });
 

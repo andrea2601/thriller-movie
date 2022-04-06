@@ -1,0 +1,95 @@
+body {
+    overflow-y: hidden;
+    background: #000;
+}
+
+nav #logo {
+    margin-top: 10px;
+    padding: 50px 55px;
+}
+
+nav #logo img {
+    margin-top: 100px;
+    width: 150px;
+}
+
+
+main.cardWrapperMovie {
+    overflow-y: hidden;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    z-index: 2;
+}
+
+main.cardWrapperMovie .card {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    height: 100vh;
+    width: 100vh;
+    padding: 0 0 0 100px;
+}
+
+main.cardWrapperMovie .card .img {
+    height: 100vh;
+    width: auto;
+    position: fixed;
+    right: 0;
+}
+
+main.cardWrapperMovie .card .img::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    width: 100px;
+    background: linear-gradient(to left, transparent, black);
+    z-index: 100;
+}
+
+main.cardWrapperMovie .card .img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+main.cardWrapperMovie .card p {
+    z-index: 5;
+    width: 100%;
+}
+
+main.cardWrapperMovie .card p.popularity,
+main.cardWrapperMovie .card p.genre,
+main.cardWrapperMovie .card p.date{
+    width: 33%;
+    display: block;
+    padding-bottom: 5px;
+    color: rgb(173, 173, 173);
+}
+
+main.cardWrapperMovie .card h3 {
+    width: 100%;
+    font-size: 100px;
+    padding-top: 20px;
+    z-index: 5;
+    
+}
+
+main.cardWrapperMovie .card .btn{
+    z-index: 5;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+    background: red;
+    border: 2px solid red;
+    border-radius: 10%;
+    cursor: pointer;
+    display: flex;
+}

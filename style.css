@@ -10,14 +10,6 @@ body {
     font-family: 'Netflix Sans';
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-image: linear-gradient(black, transparent);
-    height: 41px;
-    margin-bottom: 10px;
-}
 
 /* LOGIN */
 .login {
@@ -28,7 +20,7 @@ nav {
     height: 100vh;
     background: #141414;
     z-index: 300;
-
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -92,6 +84,19 @@ nav {
     border: 2px solid gray;
     text-align: center;
     width: 50vw;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-image: linear-gradient(black, transparent);
+    height: 41px;
+    width: 100vw;
+    margin-bottom: 10px;
+    position: fixed;
+    top: 0;
+    z-index: 3;
 }
 
 nav #logo {
@@ -198,6 +203,9 @@ main .cardWrapper .card:hover {
     transition: all 0.5s ease-in-out;
     z-index: 101;
 }
+main .cardWrapper .card {
+    cursor: pointer;
+}
 
 /* dighd */
 main .cardWrapperList {
@@ -259,6 +267,7 @@ main .cardWrapperList .card {
     justify-content: start;
     align-items: center;
     flex-wrap: wrap;
+    cursor: pointer;
 }
 
 
@@ -352,8 +361,8 @@ main .cardWrapperList .card {
         display: block;
         border: 2px solid gray;
         text-align: center;
-        width: 50vw; */
-    } */
+        width: 50vw; }*/
+    
 
     main .cardWrapper .card:hover {
         transform: scale(1);
@@ -366,6 +375,7 @@ main .cardWrapperList .card {
         transition: all 0.5s ease-in-out;
         z-index: 999;
     }
+}
 
 
 @media all and (max-height:780px)  and (max-width:580px){
@@ -380,5 +390,8 @@ main .cardWrapperList .card {
 
 
     .login #noLogin{
-        transform: translate(0, -67px);
+        transform: translate(0, -80px);
     }}
+
+
+   
