@@ -1,6 +1,31 @@
 const getMovies = async (url) => {
     const res = await fetch(url);
     const data = await res.json();
+    
+    console.log("data.result.id", data.results);
+
+    for(let i=0; i<data.results.length; i++){
+        ids[i]=data.results[i].id;
+    }
+    console.log("data idis",ids);
+
+    let id = ids[Math.floor(Math.random()*ids.length)];
+    const apiKey = "652bd852a54702ac6a9aab4afa9bc98a";
+    const singleUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`;
+
+
+    getMoviesHero(singleUrl).then(data => {
+        createHero(
+            data.title,
+            data.poster_path,
+            data.vote_average,
+            data.overview,
+            data.id,
+            data.release_date
+        );
+        console.log(data);
+    });
+
     return data.results;
 };
 const getMoviesHero = async (url) => {
@@ -9,7 +34,7 @@ const getMoviesHero = async (url) => {
     return data;
 };
 
-const formatMinText = (text) => text.split("").slice(0, 350).join("") + "...";
+const formatMinText = (text) => text.split("").slice(0, 310).join("") + "...";
 
 const createCard = (title, imgUrl, popularity, id, date) => {
 
@@ -174,29 +199,18 @@ const pushEL = (el) => { myList.push(el) };
 let myList = [];
 const main = document.querySelector("main");
 
-const id = 760926;
+
+
+let ids = [];
 const apiKey = "652bd852a54702ac6a9aab4afa9bc98a";
 const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=53`;
-const singleUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`;
 
 
-getMoviesHero(singleUrl).then(data => {
-    createHero(
-        data.title,
-        data.poster_path,
-        data.vote_average,
-        data.overview,
-        data.id,
-        data.release_date
-    );
-    console.log(data);
-});
 
 
 getMovies(url).then(data => {
     const movieArray = [...data];
-    console.log(movieArray);
-    movieArray.map(movie => {
+       movieArray.map(movie => {
         createCard(
             movie.title,
             movie.backdrop_path,
