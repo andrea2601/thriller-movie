@@ -3,12 +3,12 @@ body {
     background: #000;
 }
 
-nav #logo {
+nav .logo {
     margin-top: 10px;
     padding: 50px 55px;
 }
 
-nav #logo img {
+nav .logo img {
     margin-top: 100px;
     width: 150px;
 }
@@ -108,10 +108,54 @@ main.cardWrapperMovie .card .btn {
     cursor: pointer;
     display: flex;
 }
-@media all and (max-width:580px){
+
+.trailerContainer{
+    display: none;
+}
+
+.trailerContainer.showTrailer{
+    display: block;
+}
+
+.bgOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000000de;
+    width: 100vw;
+    height: 100vh;
+    z-index: 149;
+}
+
+.trailer {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 150;
+}
+
+iframe {
+    position: fixed;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    width: 90vw;
+    height: 50.625vw;
+
+}
+
+@media (orientation: landscape){
+    iframe{
+        height: 40.625vw;
+    }
+}
+
+@media all and (max-width:580px) {
     main.cardWrapperMovie .card h3 {
         font-size: 3.5em;
     }
+
     main.cardWrapperMovie .card {
-        padding: 0 0 0 15vw;}
+        padding: 0 0 0 15vw;
+    }
 }

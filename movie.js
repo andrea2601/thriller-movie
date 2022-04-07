@@ -5,6 +5,7 @@ console.log(params)
 id = params.get("id");
 console.log(id);
 
+const formatMinText = (text) => text.split("").slice(0, 350).join("") + "...";
 
 const createMain = (title, imgUrl, popularity, overview, id, date) => {
     const divEl = document.createElement("div");
@@ -41,7 +42,7 @@ const createMain = (title, imgUrl, popularity, overview, id, date) => {
     h3El.textContent = title;
     pPopEl.textContent = popularity;
     pDateEl.textContent = date;
-    pOverEl.textContent = overview;
+    pOverEl.textContent = formatMinText(overview);
     pGenEl.textContent = "Thriller";
     btnPEl.textContent = "Play";
     palyEl.textContent = "play_arrow";
@@ -63,6 +64,18 @@ async function getMovie(url) {
     return data;
 }
 
+const stopVideo = ( element ) => {
+	let iframe = element.querySelector( 'iframe');
+	let video = element.querySelector( 'video' );
+	if ( iframe ) {
+		let iframeSrc = iframe.src;
+		iframe.src = iframeSrc;
+	}
+	if ( video ) {
+		video.pause();
+	}
+};
+
 getMovie(url)
     .then(data => {
         createMain(
@@ -74,4 +87,24 @@ getMovie(url)
             data.release_date
         );
         console.log(data);
+
+        const play = document.querySelector(".btn");
+        const trailerContainer = document.querySelector(".trailerContainer");
+        const trailer = document.querySelector(".trailer");
+        const home = document.querySelector(".logo");
+
+        home.addEventListener("click", ()=>{
+            window.location = `./index.html`;
+        });
+
+        play.addEventListener("click", ()=>{
+            trailerContainer.classList.add("showTrailer");
+
+            const bgOverlay = document.querySelector(".bgOverlay");
+
+            bgOverlay.addEventListener("click", ()=>{
+                trailerContainer.classList.remove("showTrailer");
+                stopVideo(trailer);
+            })
+        })
     });

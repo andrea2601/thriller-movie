@@ -3,6 +3,11 @@ const getMovies = async (url) => {
     const data = await res.json();
     return data.results;
 };
+const getMoviesHero = async (url) => {
+    const res = await fetch(url);
+    const data = await res.json();
+    return data;
+};
 
 const createCard = (title, imgUrl, popularity, id, date) => {
 
@@ -71,13 +76,89 @@ const createMyList = (title, imgUrl, popularity, id, date) => {
     cardWrapperList.appendChild(divEl);
 };
 
+const createHero = (title, imgUrl, popularity, overview, id, date) => {
+    const divEl = document.createElement("div");
+    const imgClass = document.createElement("div");
+    const h3El = document.createElement("h3");
+    const imgEl = document.createElement("img");
+    const pPopEl = document.createElement("p");
+    const pDateEl = document.createElement("p");
+    const pOverEl = document.createElement("p");
+    const pGenEl = document.createElement("p");
+
+
+
+    divEl.classList.add("card");
+    pPopEl.classList.add("popularity");
+    pDateEl.classList.add("date");
+    pOverEl.classList.add("overview");
+    pGenEl.classList.add("genre");
+    imgClass.classList.add("img");
+
+
+    imgEl.setAttribute("src", `https://image.tmdb.org/t/p/original/${imgUrl}`);
+    imgEl.setAttribute("alt", "img poster");
+    imgEl.setAttribute("id", id);
+    divEl.setAttribute("id", id);
+
+
+    h3El.textContent = title;
+    pPopEl.textContent = popularity;
+    pDateEl.textContent = date;
+    pOverEl.textContent = overview;
+    pGenEl.textContent = "Thriller";
+
+    imgClass.appendChild(imgEl);
+    divEl.append(h3El, imgClass, pDateEl, pPopEl, pGenEl, pOverEl);
+
+    const cardWrapper = document.querySelector(".hero");
+    console.log(cardWrapper);
+    cardWrapper.appendChild(divEl);
+};
+
 const pushEL = (el) => { myList.push(el) };
 
 const myList = [];
 const main = document.querySelector("main");
 
+const id = 414906;
 const apiKey = "652bd852a54702ac6a9aab4afa9bc98a";
 const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=53`;
+const singleUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`;
+
+
+getMoviesHero(singleUrl).then(data => {
+    createHero(
+        data.title,
+        data.poster_path,
+        data.vote_average,
+        data.overview,
+        data.id,
+        data.release_date
+    );
+    console.log(data);
+
+    // const play = document.querySelector(".btn");
+    // const trailerContainer = document.querySelector(".trailerContainer");
+    // const trailer = document.querySelector(".trailer");
+    // const home = document.querySelector(".logo");
+
+    // home.addEventListener("click", ()=>{
+    //     window.location = `./index.html`;
+    // });
+
+    // play.addEventListener("click", ()=>{
+    //     trailerContainer.classList.add("showTrailer");
+
+    //     const bgOverlay = document.querySelector(".bgOverlay");
+
+    //     bgOverlay.addEventListener("click", ()=>{
+    //         trailerContainer.classList.remove("showTrailer");
+    //         stopVideo(trailer);
+    //     })
+    // })
+});
+
 
 getMovies(url).then(data => {
     const movieArray = [...data];
@@ -108,6 +189,15 @@ getMovies(url).then(data => {
         autenticator = 0;
     })
     console.log(autenticator);
+
+    const home = document.querySelectorAll(".logo");
+
+        home.forEach(element => {
+            element.addEventListener("click", () => {
+                window.location = `./index.html`;
+            })
+        })
+
 
     cards = document.querySelectorAll(".card > img");
     cards.forEach(element => {
@@ -149,5 +239,5 @@ getMovies(url).then(data => {
     });
 
 
-});
+})
 

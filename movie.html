@@ -9,6 +9,7 @@
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+    <link rel="icon" href="./icon.png">
     <link rel="stylesheet" href="./font.css">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./styleMovie.css">
@@ -16,8 +17,8 @@
 
 <body>
     <nav>
-        <div id="logo">
-            <img src="./Logonetflix.png" alt="Logo">
+        <div class="logo">
+                <img src="./Logonetflix.png" alt="Logo">
         </div>
 
         <div id="menu">
@@ -48,7 +49,15 @@
     <main class="cardWrapperMovie">
 
     </main>
-
+    <div class="trailerContainer">
+        <div class="bgOverlay"></div>
+        <div class="trailer">
+            <iframe src="https://www.youtube-nocookie.com/embed/wJQLV8fG8hc" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+    </div>
     <script src="./movie.js"></script>
 </body>
 

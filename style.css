@@ -11,6 +11,7 @@ body {
 }
 
 
+
 /* LOGIN */
 .login {
     position: fixed;
@@ -20,20 +21,22 @@ body {
     height: 100vh;
     background: #141414;
     z-index: 300;
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    background-image: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 31%);
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 31%);
 }
-.login #logo{
+
+.login .logo {
     text-align: start;
     width: 100%;
     padding: 0 50px;
+    cursor: pointer;
 }
 
-.login #logo img{
+.login .logo img {
     width: 200px;
     height: auto;
 }
@@ -59,17 +62,17 @@ body {
     border-radius: 7%;
 }
 
-.login .profiles p{
+.login .profiles p {
     text-align: center;
     font-size: 24px;
     color: gray;
 }
 
-.login .profiles .profile{
+.login .profiles .profile {
     cursor: pointer;
 }
 
-.login #noLogin{
+.login #noLogin {
     color: gray;
     width: 100%;
     cursor: pointer;
@@ -78,7 +81,7 @@ body {
     margin: 0 0 20px 0;
 }
 
-.login #noLogin p{
+.login #noLogin p {
     padding: 10px;
     display: block;
     border: 2px solid gray;
@@ -86,6 +89,8 @@ body {
     width: 50vw;
 }
 
+
+/* NAVBAR */
 nav {
     display: flex;
     justify-content: space-between;
@@ -99,12 +104,13 @@ nav {
     z-index: 3;
 }
 
-nav #logo {
+nav .logo {
     margin-top: 10px;
     padding: 25px 15px;
+    cursor: pointer;
 }
 
-nav #logo img {
+nav .logo img {
     width: 55px;
 }
 
@@ -114,6 +120,7 @@ nav #account {
     align-items: center;
     margin-top: 10px;
     gap: 10px;
+    cursor: pointer;
 }
 
 nav #account #avatar img {
@@ -132,10 +139,14 @@ nav a {
     display: none;
 }
 
+/* MAIN */
+main{
+    transform: translateY(-30px);
+}
+
 main h2.all {
     /* display: inline-block; */
     font-size: 24px;
-    margin-top: 15px;
     padding: 0 8px 2px 8px;
     background-image: linear-gradient(transparent, black);
     transform: translate(0, 34px);
@@ -144,7 +155,6 @@ main h2.all {
 main h2.list {
     /* display: inline-block; */
     font-size: 24px;
-    margin-top: 15px;
     padding: 0 8px 2px 8px;
     background-image: linear-gradient(transparent, black);
     transform: translate(0, 10px);
@@ -201,13 +211,15 @@ main .cardWrapper .card .date {
 main .cardWrapper .card:hover {
     transform: scale(1.5);
     transition: all 0.5s ease-in-out;
-    z-index: 101;
-}
-main .cardWrapper .card {
-    cursor: pointer;
+    z-index: 299;
 }
 
-/* dighd */
+main .cardWrapper .card {
+    cursor: pointer;
+    z-index: 298;
+}
+
+/* MYLIST */
 main .cardWrapperList {
     display: flex;
     justify-content: start;
@@ -258,7 +270,7 @@ main .cardWrapperList .card .date {
 main .cardWrapperList .card:hover {
     transform: scale(1.5);
     transition: all 0.5s ease-in-out;
-    z-index: 999;
+    z-index: 299;
 }
 
 main .cardWrapperList .card {
@@ -268,6 +280,7 @@ main .cardWrapperList .card {
     align-items: center;
     flex-wrap: wrap;
     cursor: pointer;
+    z-index: 298;
 }
 
 
@@ -303,7 +316,89 @@ main .cardWrapperList .card {
     background: #555;
 }
 
-@media all and (max-width:580px){
+
+/* HERO */
+.hero {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 55vh;
+    width: 100vw;
+}
+
+.hero .card {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-start;
+    height: 100%;
+    width: 71vw;
+    padding: 0 0 0 10vw;
+}
+
+.hero .card .img {
+    height: 100%;
+    width: 100vw;
+    position: absolute;
+    right: 0;
+}
+
+.hero .card .img::before {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    height: 100px;
+    width: 100%;
+    background: linear-gradient(to bottom, transparent, #141414);
+    z-index: 5;
+}
+
+.hero .card .img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.hero .card p {
+    z-index: 5;
+    width: 100%;
+    text-shadow: 0px 0px 26px rgba(0, 0, 0, 1);
+}
+
+
+.hero .card p.genre {
+    width: 100%;
+    display: block;
+    padding-bottom: 5px;
+    color: rgb(173, 173, 173);
+}
+
+.hero .card p.date {
+    width: 50%;
+    display: block;
+    padding-bottom: 5px;
+    color: rgb(173, 173, 173);
+}
+
+.hero .card p.popularity {
+    width: 50%;
+    display: block;
+    padding-bottom: 5px;
+    color: rgb(173, 173, 173);
+}
+
+.hero .card h3 {
+    width: 100%;
+    font-size: 3.5em;
+    padding-top: 20px;
+    z-index: 5;
+    text-shadow: 0px 0px 26px rgba(0, 0, 0, 1);
+
+}
+
+
+/* MEDIA QUERY */
+@media all and (max-width:580px) {
     .login .profiles {
         width: 100%;
         height: 75vh;
@@ -312,9 +407,9 @@ main .cardWrapperList .card {
         flex-wrap: wrap;
         align-items: baseline;
         align-content: baseline;
-       
+
     }
-    
+
     .login .profiles .profile {
         width: 100%;
         display: flex;
@@ -322,54 +417,57 @@ main .cardWrapperList .card {
         align-items: center;
         flex-wrap: wrap;
     }
-    
+
     .login .profiles img {
         width: 130px;
         border-radius: 7%;
         text-align: center;
     }
-    .login .profiles p{
+
+    .login .profiles p {
         display: block;
         text-align: center;
         font-size: 24px;
         color: gray;
         width: 100%;
     }
+
     .login h1 {
         width: 100%;
         text-align: center;
         font-size: 30px;
         font-weight: unset;
     }
-    .login #logo{
+
+    .login .logo {
         text-align: center;
         width: 100%;
         padding: 0 50px;
     }
-    
-    .login #logo img{
+
+    .login .logo img {
         width: 20vw;
         height: auto;
     }
 
-    .login #noLogin{
+    .login #noLogin {
         transform: translate(0, -68px);
     }
-    
+
     /* .login #noLogin p{
         /* padding: 10px;
         display: block;
         border: 2px solid gray;
         text-align: center;
         width: 50vw; }*/
-    
+
 
     main .cardWrapper .card:hover {
         transform: scale(1);
         transition: all 0.5s ease-in-out;
         z-index: 101;
     }
-    
+
     main .cardWrapperList .card:hover {
         transform: scale(1);
         transition: all 0.5s ease-in-out;
@@ -378,20 +476,19 @@ main .cardWrapperList .card {
 }
 
 
-@media all and (max-height:780px)  and (max-width:580px){
-    
-    
+@media all and (max-height:780px) and (max-width:580px) {
+
+
     .login .profiles img {
         width: 100px;
     }
-    .login .profiles p{
+
+    .login .profiles p {
         font-size: 20px;
     }
 
 
-    .login #noLogin{
+    .login #noLogin {
         transform: translate(0, -80px);
-    }}
-
-
-   
+    }
+}
