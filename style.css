@@ -140,11 +140,11 @@ nav a {
 }
 
 /* MAIN */
-main{
+main.index{
     transform: translateY(-30px);
 }
 
-main h2.all {
+main.index h2.all {
     /* display: inline-block; */
     font-size: 24px;
     padding: 0 8px 2px 8px;
@@ -152,7 +152,7 @@ main h2.all {
     transform: translate(0, 34px);
 }
 
-main h2.list {
+main.index h2.list {
     /* display: inline-block; */
     font-size: 24px;
     padding: 0 8px 2px 8px;
@@ -160,7 +160,7 @@ main h2.list {
     transform: translate(0, 10px);
 }
 
-main .cardWrapper {
+main.index .cardWrapper {
     display: flex;
     justify-content: start;
     align-items: center;
@@ -171,13 +171,13 @@ main .cardWrapper {
     ;
 }
 
-main .cardWrapper img {
+main.index .cardWrapper img {
     width: 180px;
     padding: 0 5px 5px 5px;
     object-fit: cover;
 }
 
-main .cardWrapper .card span {
+main.index .cardWrapper .card span {
     position: relative;
     top: -100px;
     left: 10px;
@@ -188,13 +188,13 @@ main .cardWrapper .card span {
     font-size: 20px;
 }
 
-main .cardWrapper .card span.star {
+main.index .cardWrapper .card span.star {
     color: gold;
     font-size: 0px;
     border: none;
 }
 
-main .cardWrapper h3 {
+main.index .cardWrapper h3 {
     width: 170px;
     position: relative;
     bottom: -96px;
@@ -203,24 +203,24 @@ main .cardWrapper h3 {
     background-image: linear-gradient(transparent, black);
 }
 
-main .cardWrapper .card .popularity,
-main .cardWrapper .card .date {
+main.index .cardWrapper .card .popularity,
+main.index .cardWrapper .card .date {
     display: none;
 }
 
-main .cardWrapper .card:hover {
+main.index .cardWrapper .card:hover {
     transform: scale(1.5);
     transition: all 0.5s ease-in-out;
     z-index: 299;
 }
 
-main .cardWrapper .card {
+main.index .cardWrapper .card {
     cursor: pointer;
     z-index: 298;
 }
 
 /* MYLIST */
-main .cardWrapperList {
+main.index .cardWrapperList {
     display: flex;
     justify-content: start;
     align-items: center;
@@ -231,13 +231,13 @@ main .cardWrapperList {
     ;
 }
 
-main .cardWrapperList img {
+main.index .cardWrapperList img {
     width: 180px;
     padding: 0 5px 5px 5px;
     object-fit: cover;
 }
 
-main .cardWrapperList .card span {
+main.index .cardWrapperList .card span {
     position: relative;
     top: -95px;
     left: 10px;
@@ -248,12 +248,12 @@ main .cardWrapperList .card span {
     font-size: 20px;
 }
 
-main .cardWrapperList .card span.star {
+main.index .cardWrapperList .card span.star {
     color: gold;
     display: none;
 }
 
-main .cardWrapperList h3 {
+main.index .cardWrapperList h3 {
     width: 170px;
     position: relative;
     bottom: 57px;
@@ -262,18 +262,18 @@ main .cardWrapperList h3 {
     background-image: linear-gradient(transparent, black);
 }
 
-main .cardWrapperList .card .popularity,
-main .cardWrapperList .card .date {
+main.index .cardWrapperList .card .popularity,
+main.index .cardWrapperList .card .date {
     display: none;
 }
 
-main .cardWrapperList .card:hover {
+main.index .cardWrapperList .card:hover {
     transform: scale(1.5);
     transition: all 0.5s ease-in-out;
     z-index: 299;
 }
 
-main .cardWrapperList .card {
+main.index .cardWrapperList .card {
     width: 180px;
     display: flex;
     justify-content: start;
@@ -462,13 +462,13 @@ main .cardWrapperList .card {
         width: 50vw; }*/
 
 
-    main .cardWrapper .card:hover {
+    main.index .cardWrapper .card:hover {
         transform: scale(1);
         transition: all 0.5s ease-in-out;
         z-index: 101;
     }
 
-    main .cardWrapperList .card:hover {
+    main.index .cardWrapperList .card:hover {
         transform: scale(1);
         transition: all 0.5s ease-in-out;
         z-index: 999;
