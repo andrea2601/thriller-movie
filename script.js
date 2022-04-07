@@ -146,7 +146,16 @@ const createMyList = (title, imgUrl, popularity, id, date, movieArray) => {
                     movieArray
                 );
 
-            })
+            });
+            let cardList = document.querySelectorAll(".cardImg");
+                console.log(cardList);
+                cardList.forEach(element => {
+                    element.addEventListener("click", () => {
+                        const imgId = element.id;
+                        console.log(imgId);
+                        window.location = `./movie.html?id=${imgId}`;
+                    })
+                })
         });
     };
 
