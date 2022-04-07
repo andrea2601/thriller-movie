@@ -1,3 +1,23 @@
+*::selection 
+{
+    background-color:transparent;
+} 
+*::-moz-selection
+{
+    background-color:transparent;
+}
+*
+{        
+    -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    /*IE10*/
+    -ms-user-select: none;
+    user-select: none;
+
+    /*You just need this if you are only concerned with android and not desktop browsers.*/
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+} 
+
 * {
     margin: 0;
     padding: 0;
@@ -142,6 +162,7 @@ nav a {
 /* MAIN */
 main.index{
     transform: translateY(-30px);
+    height: 40vh;
 }
 
 main.index h2.all {
@@ -157,7 +178,7 @@ main.index h2.list {
     font-size: 24px;
     padding: 0 8px 2px 8px;
     background-image: linear-gradient(transparent, black);
-    transform: translate(0, 10px);
+    transform: translate(0, -36.5px);
 }
 
 main.index .cardWrapper {
@@ -219,16 +240,17 @@ main.index .cardWrapper .card {
     z-index: 298;
 }
 
+
 /* MYLIST */
 main.index .cardWrapperList {
     display: flex;
     justify-content: start;
-    align-items: center;
+    align-items: flex-end;
     flex-wrap: nowrap;
     overflow: scroll;
     overflow-y: hidden;
-    height: 177px;
-    ;
+    height: 200px;
+    transform: translateY(-81px);
 }
 
 main.index .cardWrapperList img {
@@ -270,7 +292,7 @@ main.index .cardWrapperList .card .date {
 main.index .cardWrapperList .card:hover {
     transform: scale(1.5);
     transition: all 0.5s ease-in-out;
-    z-index: 299;
+    z-index: 999;
 }
 
 main.index .cardWrapperList .card {
@@ -370,21 +392,21 @@ main.index .cardWrapperList .card {
     width: 100%;
     display: block;
     padding-bottom: 5px;
-    color: rgb(173, 173, 173);
+    color: #d4d4d4;
 }
 
 .hero .card p.date {
     width: 50%;
     display: block;
     padding-bottom: 5px;
-    color: rgb(173, 173, 173);
+    color: #d4d4d4;
 }
 
 .hero .card p.popularity {
     width: 50%;
     display: block;
     padding-bottom: 5px;
-    color: rgb(173, 173, 173);
+    color: #d4d4d4;
 }
 
 .hero .card h3 {
@@ -396,6 +418,18 @@ main.index .cardWrapperList .card {
 
 }
 
+footer{
+    background: #000;
+    width: 100vw;
+    height: 45px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    font-size: 12px;
+}
 
 /* MEDIA QUERY */
 @media all and (max-width:580px) {
@@ -490,5 +524,22 @@ main.index .cardWrapperList .card {
 
     .login #noLogin {
         transform: translate(0, -80px);
+    }
+}
+
+@media all and (min-width:580px) {
+    .hero .card p.genre {
+        width: 30%;
+      
+    }
+    
+    .hero .card p.date {
+        width: 35%;
+        
+    }
+    
+    .hero .card p.popularity {
+        width: 20%;
+       
     }
 }
