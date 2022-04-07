@@ -3,9 +3,11 @@ body {
     background: #000;
 }
 
+
+
 nav .logo {
     margin-top: 10px;
-    padding: 50px 55px;
+    padding: 50px 0 50px 55px
 }
 
 nav .logo img {

@@ -9,6 +9,8 @@ const getMoviesHero = async (url) => {
     return data;
 };
 
+const formatMinText = (text) => text.split("").slice(0, 350).join("") + "...";
+
 const createCard = (title, imgUrl, popularity, id, date) => {
 
     const divEl = document.createElement("div");
@@ -46,7 +48,8 @@ const createCard = (title, imgUrl, popularity, id, date) => {
     const cardWrapper = document.querySelector(".cardWrapper");
     cardWrapper.appendChild(divEl);
 };
-const createMyList = (title, imgUrl, popularity, id, date) => {
+
+const createMyList = (title, imgUrl, popularity, id, date, movieArray) => {
 
     const divEl = document.createElement("div");
     const h3El = document.createElement("h3");
@@ -60,10 +63,13 @@ const createMyList = (title, imgUrl, popularity, id, date) => {
     pDateEl.classList.add("date");
     removeEL.classList.add("material-icons");
     removeEL.classList.add("remove");
+    imgEl.classList.add("cardImg");
 
     imgEl.setAttribute("src", `https://image.tmdb.org/t/p/original/${imgUrl}`);
     imgEl.setAttribute("alt", "img poster");
+    imgEl.setAttribute("id", id);
     divEl.setAttribute("id", id);
+    removeEL.setAttribute("id", id);
 
     h3El.textContent = title;
     pPopEl.textContent = popularity;
@@ -74,6 +80,53 @@ const createMyList = (title, imgUrl, popularity, id, date) => {
 
     const cardWrapperList = document.querySelector(".cardWrapperList");
     cardWrapperList.appendChild(divEl);
+
+
+
+
+    const delEl = (element, key) => {
+        element.addEventListener("click", () => {
+
+            let res = 0;
+            for (let i = 0; i < movieArray.length; i++) {
+                if (movieArray[i].id == element.id) {
+                    res = i;
+                    break;
+                }
+            }
+
+            const stars = document.querySelectorAll(".star");
+            const plus = document.querySelectorAll(".plus");
+            stars[res].classList.remove("show");
+            plus[res].classList.remove("hide");
+
+            // const index = indexOf(element.id);
+            // myList.splice(index, 1);
+
+            myList = myList.filter(e => {
+                console.log("e", e.id, "element", element.id);
+                if (e.id != element.id) return e;
+            });
+
+            console.log("mylist", myList)
+            const cardWrapperList = document.querySelector(".cardWrapperList");
+            cardWrapperList.textContent = "";
+            myList.map(movie => {
+                createMyList(
+                    movie.title,
+                    movie.backdrop_path,
+                    movie.popularity,
+                    movie.id,
+                    movie.release_date,
+                    movieArray
+                );
+
+            })
+        });
+    };
+
+    const deleteEls = document.querySelectorAll(".remove");
+    deleteEls.forEach((item, key) => delEl(item, key));
 };
 
 const createHero = (title, imgUrl, popularity, overview, id, date) => {
@@ -105,7 +158,7 @@ const createHero = (title, imgUrl, popularity, overview, id, date) => {
     h3El.textContent = title;
     pPopEl.textContent = popularity;
     pDateEl.textContent = date;
-    pOverEl.textContent = overview;
+    pOverEl.textContent = formatMinText(overview);
     pGenEl.textContent = "Thriller";
 
     imgClass.appendChild(imgEl);
@@ -118,10 +171,10 @@ const createHero = (title, imgUrl, popularity, overview, id, date) => {
 
 const pushEL = (el) => { myList.push(el) };
 
-const myList = [];
+let myList = [];
 const main = document.querySelector("main");
 
-const id = 414906;
+const id = 760926;
 const apiKey = "652bd852a54702ac6a9aab4afa9bc98a";
 const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=53`;
 const singleUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`;
@@ -137,26 +190,6 @@ getMoviesHero(singleUrl).then(data => {
         data.release_date
     );
     console.log(data);
-
-    // const play = document.querySelector(".btn");
-    // const trailerContainer = document.querySelector(".trailerContainer");
-    // const trailer = document.querySelector(".trailer");
-    // const home = document.querySelector(".logo");
-
-    // home.addEventListener("click", ()=>{
-    //     window.location = `./index.html`;
-    // });
-
-    // play.addEventListener("click", ()=>{
-    //     trailerContainer.classList.add("showTrailer");
-
-    //     const bgOverlay = document.querySelector(".bgOverlay");
-
-    //     bgOverlay.addEventListener("click", ()=>{
-    //         trailerContainer.classList.remove("showTrailer");
-    //         stopVideo(trailer);
-    //     })
-    // })
 });
 
 
@@ -192,14 +225,14 @@ getMovies(url).then(data => {
 
     const home = document.querySelectorAll(".logo");
 
-        home.forEach(element => {
-            element.addEventListener("click", () => {
-                window.location = `./index.html`;
-            })
+    home.forEach(element => {
+        element.addEventListener("click", () => {
+            window.location = `./index.html`;
         })
+    })
 
 
-    cards = document.querySelectorAll(".card > img");
+    let cards = document.querySelectorAll(".card > img");
     cards.forEach(element => {
         element.addEventListener("click", () => {
             const imgId = element.id;
@@ -207,11 +240,13 @@ getMovies(url).then(data => {
             window.location = `./movie.html?id=${imgId}`;
         })
     })
-    plus = document.querySelectorAll(".plus");
+
+    const plus = document.querySelectorAll(".plus");
     console.log(plus);
     plus.forEach((element, key) => {
         element.addEventListener("click", () => {
             if (autenticator == 1) {
+
                 myList.push(movieArray.find(item =>
                     item.id == element.id
                 ));
@@ -221,7 +256,7 @@ getMovies(url).then(data => {
 
                 const stars = document.querySelectorAll(".star");
                 stars[key].classList.add("show");
-                // stars.forEach(star => );
+
 
                 const cardWrapperList = document.querySelector(".cardWrapperList");
                 cardWrapperList.textContent = "";
@@ -231,9 +266,23 @@ getMovies(url).then(data => {
                         movie.backdrop_path,
                         movie.popularity,
                         movie.id,
-                        movie.release_date
+                        movie.release_date,
+                        movieArray
                     );
+
                 })
+
+                let cardList = document.querySelectorAll(".cardImg");
+                console.log(cardList);
+                cardList.forEach(element => {
+                    element.addEventListener("click", () => {
+                        const imgId = element.id;
+                        console.log(imgId);
+                        window.location = `./movie.html?id=${imgId}`;
+                    })
+                })
+
+
             } else { alert("Devi accedere per poter aggiungere elementi alla MyList"); }
         })
     });
