@@ -1,3 +1,4 @@
+// PARAMETRO PRESO DALL'URL PER IDENIFICARE IL FILM
 const params = new URLSearchParams(window.location.search)
 let id = 0;
 console.log(params)
@@ -5,8 +6,10 @@ console.log(params)
 id = params.get("id");
 console.log(id);
 
+// FUNZIONE PER RIDURRE IL NUMERO DEI CARATTERI
 const formatMinText = (text) => text.split("").slice(0, 350).join("") + "...";
 
+// FUNZIONE PER CREARE LA PAGINA CON I DETTAGLI
 const createMain = (title, imgUrl, popularity, overview, id, date) => {
     const divEl = document.createElement("div");
     const imgClass = document.createElement("div");
@@ -58,12 +61,14 @@ const createMain = (title, imgUrl, popularity, overview, id, date) => {
 const apiKey = "652bd852a54702ac6a9aab4afa9bc98a";
 const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`;
 
+// FUNZIONE FETCH PER RICHIAMARE IL SINGOLO FILM
 async function getMovie(url) {
     const res = await fetch(url);
     const data = await res.json();
     return data;
 }
 
+// FUNZIONE PER STOPPARE IL VIDEO QUANDO SI CLICCA FUORI 
 const stopVideo = ( element ) => {
 	let iframe = element.querySelector( 'iframe');
 	let video = element.querySelector( 'video' );
@@ -76,6 +81,7 @@ const stopVideo = ( element ) => {
 	}
 };
 
+// RICHIAMO DELLA FUNZIONE FETCH
 getMovie(url)
     .then(data => {
         createMain(
@@ -97,6 +103,7 @@ getMovie(url)
             window.location = `./index.html`;
         });
 
+        // APERTURA DELLA MODALE DEL VIDEO QUANDO CLICCO SU PLAY
         play.addEventListener("click", ()=>{
             trailerContainer.classList.add("showTrailer");
 

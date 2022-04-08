@@ -1,4 +1,4 @@
-
+// FETCH DI TUTTI I FILM THRILLER
 const getMovies = async (url) => {
     const res = await fetch(url);
     const data = await res.json();
@@ -14,7 +14,7 @@ const getMovies = async (url) => {
     const apiKey = "652bd852a54702ac6a9aab4afa9bc98a";
     const singleUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`;
 
-
+// FETCH DEL FILM PER LA HERO
     getMoviesHero(singleUrl).then(data => {
         createHero(
             data.title,
@@ -29,14 +29,17 @@ const getMovies = async (url) => {
 
     return data.results;
 };
+// FETCH DEL SINGOLO FILM PER LA HERO
 const getMoviesHero = async (url) => {
     const res = await fetch(url);
     const data = await res.json();
     return data;
 };
 
+// FUNZIONE PER RIDURRE IL NUMERO DEI CARATTERI
 const formatMinText = (text) => text.split("").slice(0, 200).join("") + "...";
 
+// FUNZIONE PER CREARE LA LISTA DI TUTTI I FILM
 const createCard = (title, imgUrl, popularity, id, date) => {
 
     const divEl = document.createElement("div");
@@ -74,6 +77,7 @@ const createCard = (title, imgUrl, popularity, id, date) => {
     cardWrapper.appendChild(divEl);
 };
 
+// FUNZIONE PER CREARE LA MYLIST
 const createMyList = (title, imgUrl, popularity, id, date, movieArray) => {
 
     const divEl = document.createElement("div");
@@ -162,6 +166,7 @@ const createMyList = (title, imgUrl, popularity, id, date, movieArray) => {
     deleteEls.forEach((item, key) => delEl(item, key));
 };
 
+// FUNZIONE PER CREARE LA HERO
 const createHero = (title, imgUrl, popularity, overview, id, date) => {
     const divEl = document.createElement("div");
     const imgClass = document.createElement("div");
@@ -215,7 +220,7 @@ const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_
 
 
 
-
+// RICHIAMO DELLA FUNZIONE FETCH
 getMovies(url).then(data => {
     const movieArray = [...data];
     movieArray.map(movie => {
@@ -232,13 +237,14 @@ getMovies(url).then(data => {
     const guest = document.querySelector("#noLogin");
     let autenticator = 0;
 
+    // SE CLICCO SU UNO DEI PROFILI VENGO AUTENTICATO
     profiles.forEach(element => {
         element.addEventListener("click", () => {
             document.querySelector(".login").classList.add("hide");
             autenticator = 1;
         })
     })
-
+    // SE CLICCO ENTRA COME OSPITE NON VENGO AUTENTICATO
     guest.addEventListener("click", () => {
         document.querySelector(".login").classList.add("hide");
         autenticator = 0;
@@ -246,14 +252,14 @@ getMovies(url).then(data => {
     console.log(autenticator);
 
     const home = document.querySelectorAll(".logo");
-
+    // LINK ALLA HOME PREMENDO SUL LOGO
     home.forEach(element => {
         element.addEventListener("click", () => {
             window.location = `./index.html`;
         })
     })
 
-
+    // LINK ALLA PAGINA DEL FILM PREMENDO SULL'IMMAGINE DEL FILM NELLA LISTA COMPLETA
     let cards = document.querySelectorAll(".card > img");
     cards.forEach(element => {
         element.addEventListener("click", () => {
@@ -262,6 +268,8 @@ getMovies(url).then(data => {
             window.location = `./movie.html?id=${imgId}`;
         })
     });
+
+    // MOUSE HOVER DELLE CARD PER VEDERE LA DATA DI USCITA
     let cardsEls = document.querySelectorAll(".card");
     cardsEls.forEach(element => {
         element.addEventListener("mouseover", () => {
@@ -274,6 +282,7 @@ getMovies(url).then(data => {
         })
     })
 
+    // TASTO PER AGGIUNGERE ELEMENTI ALLA MYLIST E COMPARSA DELLA STELLA DORATA
     const plus = document.querySelectorAll(".plus");
     console.log(plus);
     plus.forEach((element, key) => {
@@ -291,6 +300,7 @@ getMovies(url).then(data => {
                 stars[key].classList.add("show");
 
 
+                // CREAZIONE DELLA MYLIST
                 const cardWrapperList = document.querySelector(".cardWrapperList");
                 cardWrapperList.textContent = "";
                 myList.map(movie => {
@@ -305,6 +315,7 @@ getMovies(url).then(data => {
 
                 })
 
+                // LINK ALLA PAGINA DEL FILM PREMENDO SULL'IMMAGINE DEL FILM NELLA MYLIST
                 let cardList = document.querySelectorAll(".cardImg");
                 console.log(cardList);
                 cardList.forEach(element => {
@@ -315,6 +326,7 @@ getMovies(url).then(data => {
                     })
                 })
 
+                // MOUSE HOVER DELLE CARD PER VEDERE LA DATA DI USCITA
                 let cardsListEls = document.querySelectorAll(".cardWrapperList .card");
                 cardsListEls.forEach(element => {
                     element.addEventListener("mouseover", () => {
