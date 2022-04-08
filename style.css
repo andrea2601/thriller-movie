@@ -40,7 +40,7 @@ body {
     width: 100vw;
     height: 100vh;
     background: #141414;
-    z-index: 300;
+    z-index: 304;
 
     display: flex;
     justify-content: center;
