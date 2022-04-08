@@ -1,15 +1,16 @@
+
 const getMovies = async (url) => {
     const res = await fetch(url);
     const data = await res.json();
-    
+
     console.log("data.result.id", data.results);
 
-    for(let i=0; i<data.results.length; i++){
-        ids[i]=data.results[i].id;
+    for (let i = 0; i < data.results.length; i++) {
+        ids[i] = data.results[i].id;
     }
-    console.log("data idis",ids);
+    console.log("data idis", ids);
 
-    let id = ids[Math.floor(Math.random()*ids.length)];
+    let id = ids[Math.floor(Math.random() * ids.length)];
     const apiKey = "652bd852a54702ac6a9aab4afa9bc98a";
     const singleUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`;
 
@@ -41,14 +42,14 @@ const createCard = (title, imgUrl, popularity, id, date) => {
     const divEl = document.createElement("div");
     const h3El = document.createElement("h3");
     const imgEl = document.createElement("img");
-    const pPopEl = document.createElement("p");
     const pDateEl = document.createElement("p");
+    const divDetailEl = document.createElement("div");
     const plusEl = document.createElement("span");
     const starEL = document.createElement("span");
 
     divEl.classList.add("card");
-    pPopEl.classList.add("popularity");
     pDateEl.classList.add("date");
+    divDetailEl.classList.add("detail");
     plusEl.classList.add("material-icons");
     plusEl.classList.add("plus");
     starEL.classList.add("material-icons");
@@ -62,13 +63,12 @@ const createCard = (title, imgUrl, popularity, id, date) => {
     starEL.setAttribute("id", id);
 
     h3El.textContent = title;
-    pPopEl.textContent = popularity;
-    pDateEl.textContent = date;
+    pDateEl.textContent = "Release date: " + date;
     plusEl.textContent = "add";
     starEL.textContent = "star";
 
-
-    divEl.append(h3El, imgEl, plusEl, starEL, pPopEl, pDateEl);
+    divDetailEl.append(pDateEl);
+    divEl.append(h3El, imgEl, plusEl, starEL, divDetailEl);
 
     const cardWrapper = document.querySelector(".cardWrapper");
     cardWrapper.appendChild(divEl);
@@ -79,12 +79,12 @@ const createMyList = (title, imgUrl, popularity, id, date, movieArray) => {
     const divEl = document.createElement("div");
     const h3El = document.createElement("h3");
     const imgEl = document.createElement("img");
-    const pPopEl = document.createElement("p");
+    const divDetailEl = document.createElement("div");
     const pDateEl = document.createElement("p");
     const removeEL = document.createElement("span");
 
     divEl.classList.add("card");
-    pPopEl.classList.add("popularity");
+    divDetailEl.classList.add("detail");
     pDateEl.classList.add("date");
     removeEL.classList.add("material-icons");
     removeEL.classList.add("remove");
@@ -97,11 +97,10 @@ const createMyList = (title, imgUrl, popularity, id, date, movieArray) => {
     removeEL.setAttribute("id", id);
 
     h3El.textContent = title;
-    pPopEl.textContent = popularity;
-    pDateEl.textContent = date;
+    pDateEl.textContent = "Release date: " + date;
     removeEL.textContent = "close";
-
-    divEl.append(imgEl, removeEL, h3El, pPopEl, pDateEl);
+    divDetailEl.append(pDateEl);
+    divEl.append(imgEl, removeEL, h3El, divDetailEl);
 
     const cardWrapperList = document.querySelector(".cardWrapperList");
     cardWrapperList.appendChild(divEl);
@@ -148,14 +147,14 @@ const createMyList = (title, imgUrl, popularity, id, date, movieArray) => {
 
             });
             let cardList = document.querySelectorAll(".cardImg");
-                console.log(cardList);
-                cardList.forEach(element => {
-                    element.addEventListener("click", () => {
-                        const imgId = element.id;
-                        console.log(imgId);
-                        window.location = `./movie.html?id=${imgId}`;
-                    })
+            console.log(cardList);
+            cardList.forEach(element => {
+                element.addEventListener("click", () => {
+                    const imgId = element.id;
+                    console.log(imgId);
+                    window.location = `./movie.html?id=${imgId}`;
                 })
+            })
         });
     };
 
@@ -219,7 +218,7 @@ const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_
 
 getMovies(url).then(data => {
     const movieArray = [...data];
-       movieArray.map(movie => {
+    movieArray.map(movie => {
         createCard(
             movie.title,
             movie.backdrop_path,
@@ -262,6 +261,17 @@ getMovies(url).then(data => {
             console.log(imgId);
             window.location = `./movie.html?id=${imgId}`;
         })
+    });
+    let cardsEls = document.querySelectorAll(".card");
+    cardsEls.forEach(element => {
+        element.addEventListener("mouseover", () => {
+            element.childNodes[4].classList.add("showDetail");
+
+        })
+        element.addEventListener("mouseout", () => {
+            element.childNodes[4].classList.remove("showDetail");
+
+        })
     })
 
     const plus = document.querySelectorAll(".plus");
@@ -302,6 +312,18 @@ getMovies(url).then(data => {
                         const imgId = element.id;
                         console.log(imgId);
                         window.location = `./movie.html?id=${imgId}`;
+                    })
+                })
+
+                let cardsListEls = document.querySelectorAll(".cardWrapperList .card");
+                cardsListEls.forEach(element => {
+                    element.addEventListener("mouseover", () => {
+                        element.childNodes[3].classList.add("showDetail");
+
+                    })
+                    element.addEventListener("mouseout", () => {
+                        element.childNodes[3].classList.remove("showDetail");
+
                     })
                 })
 

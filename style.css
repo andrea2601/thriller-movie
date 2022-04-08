@@ -121,7 +121,7 @@ nav {
     margin-bottom: 10px;
     position: fixed;
     top: 0;
-    z-index: 3;
+    z-index: 303;
 }
 
 nav .logo {
@@ -162,7 +162,7 @@ nav a {
 /* MAIN */
 main.index{
     transform: translateY(-30px);
-    height: 40vh;
+    height: 44vh;
 }
 
 main.index h2.all {
@@ -178,7 +178,7 @@ main.index h2.list {
     font-size: 24px;
     padding: 0 8px 2px 8px;
     background-image: linear-gradient(transparent, black);
-    transform: translate(0, -36.5px);
+    transform: translate(0, -16.5px);
 }
 
 main.index .cardWrapper {
@@ -224,9 +224,39 @@ main.index .cardWrapper h3 {
     background-image: linear-gradient(transparent, black);
 }
 
-main.index .cardWrapper .card .popularity,
-main.index .cardWrapper .card .date {
-    display: none;
+main.index .cardWrapper .card .detail{
+    width: 170px;
+    height: 0px;
+    top: 120px;
+    margin-left: 5px;
+    z-index: 0;
+}
+main.index .cardWrapper .card .detail.showDetail{
+    height: 15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    background: #141414;
+    border-radius: 0 0 10px 10px;
+    z-index: 500;
+    transition: all 0.3s ease-in-out;
+
+    position: absolute;
+    top: 120px;
+}
+
+main.index .cardWrapper .card .detail .date{
+    font-size: 0px;
+    
+}
+
+main.index .cardWrapper .card .detail.showDetail .date{
+    text-align: center;
+    font-size: 10px;
+    transition: all 0.3s ease-in-out;
 }
 
 main.index .cardWrapper .card:hover {
@@ -249,7 +279,7 @@ main.index .cardWrapperList {
     flex-wrap: nowrap;
     overflow: scroll;
     overflow-y: hidden;
-    height: 200px;
+    height: 220px;
     transform: translateY(-81px);
 }
 
@@ -284,11 +314,6 @@ main.index .cardWrapperList h3 {
     background-image: linear-gradient(transparent, black);
 }
 
-main.index .cardWrapperList .card .popularity,
-main.index .cardWrapperList .card .date {
-    display: none;
-}
-
 main.index .cardWrapperList .card:hover {
     transform: scale(1.5);
     transition: all 0.5s ease-in-out;
@@ -305,6 +330,44 @@ main.index .cardWrapperList .card {
     z-index: 298;
 }
 
+main.index .cardWrapperList .card .detail{
+    width: 170px;
+    height: 0px;
+    top: 94px;
+    margin-left: 5px;
+    z-index: 300;
+    
+
+    /* border: 2px solid red; */
+}
+main.index .cardWrapperList .card .detail.showDetail{
+    height: 15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    background: #141414;
+    border-radius: 0 0 10px 10px;
+    z-index: 500;
+    transition: all 0.3s ease-in-out;
+    
+    position: absolute;
+    top: 94px;
+    
+}
+
+main.index .cardWrapperList .card .detail .date{
+    font-size: 0px;
+    
+}
+
+main.index .cardWrapperList .card .detail.showDetail .date{
+    text-align: center;
+    font-size: 10px;
+    transition: all 0.3s ease-in-out;
+}
 
 .hide {
     display: none;
@@ -525,6 +588,7 @@ footer{
     .login #noLogin {
         transform: translate(0, -80px);
     }
+
 }
 
 @media all and (min-width:580px) {
@@ -541,5 +605,12 @@ footer{
     .hero .card p.popularity {
         width: 20%;
        
+    }
+}
+
+@media all and (max-height:500px){
+    main.index{
+        transform: translateY(-30px);
+        height: 90vh;
     }
 }
