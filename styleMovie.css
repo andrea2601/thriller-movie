@@ -7,7 +7,7 @@ body {
 
 nav .logo {
     margin-top: 10px;
-    padding: 50px 0 50px 55px
+    padding: 50px 0 50px 55px;
 }
 
 nav .logo img {
@@ -24,7 +24,7 @@ main.cardWrapperMovie {
     position: absolute;
     bottom: 0;
     left: 0;
-    height: 100%;
+    height: 100vh;
     width: 100%;
     background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
     z-index: 2;
@@ -70,7 +70,7 @@ main.cardWrapperMovie .card p {
 
 
 main.cardWrapperMovie .card p.genre {
-    width: 30%;
+    width: 20%;
     display: block;
     padding-bottom: 5px;
     color: rgb(173, 173, 173);
@@ -78,14 +78,14 @@ main.cardWrapperMovie .card p.genre {
 
 main.cardWrapperMovie .card p.date {
     margin-right: 3vw;
-    width: 20%;
+    width: 50%;
     display: block;
     padding-bottom: 5px;
     color: rgb(173, 173, 173);
 }
 
 main.cardWrapperMovie .card p.popularity {
-    width: 10%;
+    width: 15%;
     display: block;
     padding-bottom: 5px;
     color: rgb(173, 173, 173);
@@ -109,6 +109,10 @@ main.cardWrapperMovie .card .btn {
     border-radius: 10%;
     cursor: pointer;
     display: flex;
+}
+main.cardWrapperMovie .card .btn:active{
+    color: red;
+    background: white;
 }
 
 .trailerContainer{

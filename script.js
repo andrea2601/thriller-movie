@@ -34,7 +34,7 @@ const getMoviesHero = async (url) => {
     return data;
 };
 
-const formatMinText = (text) => text.split("").slice(0, 310).join("") + "...";
+const formatMinText = (text) => text.split("").slice(0, 200).join("") + "...";
 
 const createCard = (title, imgUrl, popularity, id, date) => {
 
